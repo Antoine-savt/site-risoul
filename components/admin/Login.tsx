@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
 
 const Login: React.FC = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -20,7 +22,7 @@ const Login: React.FC = () => {
         if (error) {
             setError(error.message);
         } else {
-            window.location.href = '/admin/dashboard';
+            navigate('/admin/dashboard');
         }
         setLoading(false);
     };
